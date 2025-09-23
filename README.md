@@ -18,7 +18,7 @@ It’s widely used, increasingly present in workplaces, and its encrypted WebSoc
 
 ---
 
-## 🛠 Tools & Environment (At a Glance)
+## 🛠 Tools & Environment
 - **Attacker:** Kali Linux (attacker scripts / bot controller)  
 - **Victim:** Windows 10 VM (developer workstation running the PoC agent)  
 - **Detection Stack:** Sysmon (SwiftOnSecurity config recommended), Suricata (eve.json), Wireshark (pcap visualization)  
