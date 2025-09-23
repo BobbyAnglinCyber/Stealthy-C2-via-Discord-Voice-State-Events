@@ -75,3 +75,8 @@ flowchart LR
 
 *(Screenshot – Wireshark capture showing WSS bursts)*
 
+---
+
+## ⚠️ Disclaimer
+This project was developed in a controlled lab for **educational and defensive research only.**  
+Do not attempt to use this outside of an ethical research environment.
