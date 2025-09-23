@@ -1,0 +1,9 @@
+Short window (a few minutes) capture of bot traffic inside wireshark
+showing 
+- Bot opening connection with discord gateway API
+- Several WSS bursts from repeated executions/User Join events
+- Close connection
+
+
+Capture Filter:
+(net 162.159.0.0/16 or net 104.16.0.0/12) and tcp port 443
