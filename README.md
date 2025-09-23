@@ -78,9 +78,10 @@ flowchart LR
 
 **Practical takeaway:** defenders must correlate host (**Sysmon/EDR**) + network (**Suricata/pcap**) telemetry to detect abuse. Collaboration platforms could help by exposing *limited, privacy-preserving* telemetry (e.g., beacon metadata, voice-state events) to improve defender visibility.
 
-<p align="center">
-  <img src="images/Wireshark Screenshot Client Hello and WSS-Burst.png" alt="High-Level Lab Diagram">
-</p>
+<div align="center">
+  <img src="images/Wireshark Screenshot Client Hello and WSS-Burst.png" alt="Wireshark Screenshot" width="900"/>
+  <p><em>Wireshark Screenshot showing bot establishing connection and a WSS burst initiated as a user joins voice channel/bot executes and communicates back to discord server.</em></p>
+</div>
 
 ---
 
