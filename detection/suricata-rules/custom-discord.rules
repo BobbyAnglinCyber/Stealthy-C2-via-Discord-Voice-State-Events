@@ -1,0 +1,75 @@
+
+# 1. Base WS detection Pre correlation - High noise
+alert tcp any any -> any any (msg:"Discord WebSocket early detection"; flow:established,to_server; sid:1000002; rev:1;)
+
+
+# ==============================
+# Future rules/Work in Progress
+# ==============================
+# The following rules are untested examples only
+# They are COMMENTED OUT by default.
+# Uncomment and tune as needed.
+
+# IP ranges used in example rules (edit/extend as needed)
+# ipvar DISCORD_IPS [162.159.0.0/16,104.16.0.0/12]
+# If Suricata complains about variable location
+# add the ranges to suricata.yaml vars: or ensure the rule file is loaded after rule-vars are defined
+
+#  1. flag TLS flows to DISCORD Cloudflare ranges
+# alert tls any any -> $DISCORD_IPS any (\
+#    msg:"DISC-001 Discord Cloudflare IP-range TLS traffic"; \
+#    flow:established,to_server; \
+#    sid:1000101; rev:1; \
+#    classtype:policy; \
+#    priority:2; \
+#)
+#
+# Use:
+# Flags TLS connections to known Cloudflare ranges — coarse but useful to narrow noisy hits.
+#
+# Notes/Tuning:
+# This triggers on any TLS traffic to those IPs. High recall, high false positive risk (many services use Cloudflare).
+# Add threshold or one_per_host or narrow port 443 if you want fewer alerts.
+# Combine with SNI/content rules to increase precision (see rule 2).
+
+# 2. TLS client hello SNI contains gateway.discord.gg / discord.com
+# alert tls any any -> any any (\
+#    msg:"DISC-003 TLS SNI matches discord domains (candidate)"; \
+#    flow:established,to_server; \
+#    tls.sni; \
+#    pcre:"/discord\.com|gateway\.discord\.gg/i"; \
+#    sid:1000103; rev:1; \
+#)
+#
+# Use:
+# SNI is sent in clear during TLS handshake and is a reliable indicator when present.
+#
+# Notes/tuning
+# SNI only present on TLS Client Hello for TLS stacks that send it
+# If you see tls.sni not working, ensure Suricata's TLS app-layer parsing is enabled in suricata.yaml
+
+# 3. HTTP/WebSocket/host header contains discord gateway or discord.com
+# alert http any any -> any any (\
+#    msg:"DISC-004 HTTP/WebSocket Host contains discord (candidate)"; \
+#    flow:established,to_server; \
+#    http.host; \
+#    pcre:"/gateway\.discord\.gg|discord\.com/i"; \
+#    sid:1000104; rev:1; \
+#)
+# Use:
+# Inspect HTTP headers or Host header content. This can catch websocket handshakes (if visible / unencrypted) or pre-Upgrade HTTP headers — for WSS this may be inside TLS,
+# so SNI is still the main cleartext choice.
+#
+# Alternative rule 3, for If you want to specifically target WebSocket upgrade headers (uncommon for WSS because encrypted, but handy for non-TLS tests):
+# 3 (Alt)HTTP upgrade to WebSocket + Host contains discord
+# alert http any any -> any any (\
+#    msg:"DISC-005 WebSocket handshake to Discord host (candidate)"; \
+#    flow:established,to_server; \
+#    content:"Upgrade: websocket"; http_header; nocase; \
+#    http.host; content:"gateway.discord.gg"; nocase; \
+#    sid:1000105; rev:1; \
+#)
+#
+# Notes/Tuning
+# These are effective if you can inspect HTTP headers (non-TLS) or if you decrypt TLS. For WSS, prefer SNI/content of TLS decrypted payload if available.
+# Use websocket-payload logging options in suricata.yaml if you want to capture websocket frames when not encrypted or when you can decrypt.
