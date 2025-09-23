@@ -2,6 +2,11 @@
 A proof-of-concept exploring how Discord can be abused as a command-and-control (C2) channel.  
 The PoC uses a lightweight Python bot that watches voice-state changes as a signaling mechanism. The goal: generate realistic host + network telemetry and demonstrate detection approaches using **Sysmon**, **Suricata**, and **Wireshark**.
 
+<div align="center">
+  <img src="images/User-Join and Bot-exfil.gif" alt="Attacker POV: bot posts system info to hidden admin text channel" width="900"/>
+  <p><em>Figure: Attacker POV — the PoC bot posts benign system info to a hidden admin text channel after a voice-state trigger.</em></p>
+</div>
+
 **Why Discord?** 
 It’s widely used, increasingly present in workplaces, and its encrypted WebSocket (WSS) traffic easily blends with legitimate activity — making it an attractive channel for stealthy C2 and an interesting detection challenge for defenders.
 
