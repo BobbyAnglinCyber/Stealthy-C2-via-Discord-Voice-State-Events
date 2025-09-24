@@ -1,0 +1,20 @@
+Level,Date and Time,Source,Event ID,Task Category
+Information,9/23/2025 8:11:21 PM,Microsoft-Windows-Sysmon,3,Network connection detected (rule: NetworkConnect),"Network connection detected:
+RuleName: Usermode
+UtcTime: 2025-09-24 00:11:19.290
+ProcessGuid: {6fe85d65-e501-68d2-d101-000000001e00}
+ProcessId: 8968
+Image: C:\Users\Joe GameDev\AppData\Local\Programs\Microsoft VS Code\Code.exe
+User: DESKTOP-GV5F9JV\Joe GameDev
+Protocol: udp
+Initiated: true
+SourceIsIpv6: false
+SourceIp: 10.0.2.4
+SourceHostname: DESKTOP-GV5F9JV.lan
+SourcePort: 56088
+SourcePortName: -
+DestinationIsIpv6: false
+DestinationIp: 192.168.1.1
+DestinationHostname: -
+DestinationPort: 53
+DestinationPortName: domain"
