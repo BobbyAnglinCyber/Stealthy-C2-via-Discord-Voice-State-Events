@@ -1,0 +1,31 @@
+This script is a first run at correlation the Encrypted WebSocket burst traffic from Suricata logs
+while it does work to purpose, it will need to be heavily refined before it can be considered a polished and ready-to-run script
+
+Currently this script does a few key things
+  1. Parses eve.json to extract a specific alert tied to the traffic created by the bot
+  2. Parses sysmon for event IDs 1 (Process Create) and 13 (Registry value set) as these are sytem level actions the bot is designed to execute
+  3. Correlates the alert timestamps to sysmon event timestamps with a 1 minute window margin of error (+/- 30sec before and after) 
+  4. Outputs these into 3 files Csv, JSON, and txt 
+
+Future iterations of this script and the rules it parses (see custom-discord.rules) will be more robust and account for a larger range 
+of events/alerts. I wanted to keep this within the scope of the project while offering an example at how detection could occur
+
+A few problems I ran into, that you may want to consider if you wish to reproduce this project for yourself:
+  The 1-miunte (+/-30sec) time window on either side of the timestamps came about for two reasons
+    1. Low resource VMs like the one I'm using for this proof of concept can see drop in performance when running script
+    2. On occasion, I would notice that in some test runs the "join event" wouldn't trigger immediately, then after restarting the bot on the victim machine the executions would fire
+        After some research I attribute this to a "hanging process" specifically the text file that is created and notepad.exe spawned and not properly exiting. 
+      In both cases, your own mileage may vary, I find that the 1-minute window is a strong baseline that gives good wiggle room
+  Parsing Sysmon logs through powershell can be tricky inside a VM especially if, like me, you used chocolately to manage the download and install everything
+    I went through several different iterations of parsing in this script from starting with "Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational"
+    and I then tried to export the logs to evtx with "wevtutil epl Microsoft-Windows-Sysmon/Operational C:\Logs\Sysmon.evtx" but I felt like there had to be something 
+    simpler and, frankly better for this particular use-case so I began researching, and stumbled across what I can only describe as my saving grace for this script "Search-Sysmon.Ps1"
+    by psrdrgz, and after a few dry-runs with just this, I tweaked and modified it to fit my use-case and scope of the project. If you wish to create your own script to correlate events from sysmon
+    I highly recommend starting from the script below, and adjusting to meet your needs
+    
+    Script link: https://gist.github.com/psrdrgz/1dc44c8732e3e6b3d16c28233d3e218a 
+
+  
+
+
+
