@@ -1,0 +1,25 @@
+Level,Date and Time,Source,Event ID,Task Category
+Information,9/23/2025 8:11:21 PM,Microsoft-Windows-Sysmon,1,Process Create (rule: ProcessCreate),"Process Create:
+RuleName: -
+UtcTime: 2025-09-24 00:11:21.169
+ProcessGuid: {6fe85d65-3729-68d3-1d04-000000001e00}
+ProcessId: 7820
+Image: C:\Windows\System32\notepad.exe
+FileVersion: 10.0.19041.5794 (WinBuild.160101.0800)
+Description: Notepad
+Product: Microsoft® Windows® Operating System
+Company: Microsoft Corporation
+OriginalFileName: NOTEPAD.EXE
+CommandLine: notepad.exe  ""hs_poc_outputs\youve_been_hacked_20250924-001120.txt""
+CurrentDirectory: C:\Users\Joe GameDev\Documents\Hearthstone-helper\
+User: DESKTOP-GV5F9JV\Joe GameDev
+LogonGuid: {6fe85d65-e48d-68d2-a44f-310000000000}
+LogonId: 0x314FA4
+TerminalSessionId: 1
+IntegrityLevel: High
+Hashes: MD5=6F51BCABF1B2B34AD7E670AEE6DA451F,SHA256=DA5807BB0997CC6B5132950EC87EDA2B33B1AC4533CF1F7A22A6F3B576ED7C5B,IMPHASH=09ED737A03DB7295BF734A9953F6EB5E
+ParentProcessGuid: {6fe85d65-3729-68d3-1c04-000000001e00}
+ParentProcessId: 6780
+ParentImage: C:\Windows\System32\cmd.exe
+ParentCommandLine: C:\Windows\system32\cmd.exe /c notepad.exe ""hs_poc_outputs\youve_been_hacked_20250924-001120.txt""
+ParentUser: DESKTOP-GV5F9JV\Joe GameDev"
