@@ -1,0 +1,11 @@
+Level,Date and Time,Source,Event ID,Task Category
+Information,9/23/2025 8:11:21 PM,Microsoft-Windows-Sysmon,13,Registry value set (rule: RegistryEvent),"Registry value set:
+RuleName: T1060,RunKey
+EventType: SetValue
+UtcTime: 2025-09-24 00:11:21.381
+ProcessGuid: {6fe85d65-3622-68d3-1704-000000001e00}
+ProcessId: 8788
+Image: C:\Python313\python.exe
+TargetObject: HKU\S-1-5-21-2853839321-4206817488-2284495123-1001\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\DiscordVoicePOC
+Details: C:\Users\Joe GameDev\Documents\Hearthstone-helper\Voice_State_Change.py
+User: DESKTOP-GV5F9JV\Joe GameDev"
