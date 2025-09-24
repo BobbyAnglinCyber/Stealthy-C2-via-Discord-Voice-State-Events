@@ -1,0 +1,11 @@
+Level,Date and Time,Source,Event ID,Task Category
+Information,9/23/2025 8:07:01 PM,Microsoft-Windows-Sysmon,22,Dns query (rule: DnsQuery),"Dns query:
+RuleName: -
+UtcTime: 2025-09-24 00:06:59.085
+ProcessGuid: {6fe85d65-3622-68d3-1704-000000001e00}
+ProcessId: 8788
+QueryName: gateway.discord.gg
+QueryStatus: 0
+QueryResults: ::ffff:162.159.130.234;::ffff:162.159.133.234;::ffff:162.159.135.234;::ffff:162.159.134.234;::ffff:162.159.136.234;
+Image: C:\Python313\python.exe
+User: DESKTOP-GV5F9JV\Joe GameDev"
