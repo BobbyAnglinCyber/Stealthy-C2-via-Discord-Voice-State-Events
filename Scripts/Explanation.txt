@@ -1,4 +1,4 @@
-This script is a first run at correlation the Encrypted WebSocket burst traffic from Suricata logs
+This script is a first run at correlating the Encrypted WebSocket burst traffic from Suricata logs
 while it does work to purpose, it will need to be heavily refined before it can be considered a polished and ready-to-run script
 
 Currently this script does a few key things
