@@ -14,7 +14,7 @@ A few problems I ran into, that you may want to consider if you wish to reproduc
   The 1-miunte (+/-30sec) time window on either side of the timestamps came about for two reasons
     1. Low resource VMs like the one I'm using for this proof of concept can see drop in performance when running script
     2. On occasion, I would notice that in some test runs the "join event" wouldn't trigger immediately, then after restarting the bot on the victim machine the executions would fire
-        After some research I attribute this to a "hanging process" specifically the text file that is created and notepad.exe spawned and not properly exiting. 
+        After some research I attribute this to a "hanging process" specifically the text file that is created and notepad.exe spawned not properly exiting. 
       In both cases, your own mileage may vary, I find that the 1-minute window is a strong baseline that gives good wiggle room
   Parsing Sysmon logs through powershell can be tricky inside a VM especially if, like me, you used chocolately to manage the download and install everything
     I went through several different iterations of parsing in this script from starting with "Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational"
